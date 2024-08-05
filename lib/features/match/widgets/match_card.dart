@@ -1,8 +1,9 @@
-import 'package:basket_test/core/models/match.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/config/app_colors.dart';
+import '../../../core/models/match.dart';
 
 class MatchCard extends StatelessWidget {
   const MatchCard({super.key, required this.match});
@@ -26,7 +27,9 @@ class MatchCard extends StatelessWidget {
         ],
       ),
       child: CupertinoButton(
-        onPressed: () {},
+        onPressed: () {
+          context.push('/edit-match', extra: match);
+        },
         padding: EdgeInsets.zero,
         child: Row(
           children: [

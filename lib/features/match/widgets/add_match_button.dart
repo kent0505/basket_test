@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/config/app_colors.dart';
 
@@ -24,7 +25,9 @@ class AddMatchButton extends StatelessWidget {
           ],
         ),
         child: CupertinoButton(
-          onPressed: () {},
+          onPressed: () {
+            context.push('/add-match');
+          },
           padding: EdgeInsets.zero,
           child: const Center(
             child: Text(

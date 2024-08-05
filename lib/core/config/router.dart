@@ -1,9 +1,12 @@
-import 'package:basket_test/features/news/pages/news_detail_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/home/pages/home_page.dart';
+import '../../features/match/pages/add_match_page.dart';
+import '../../features/match/pages/edit_match_page.dart';
+import '../../features/news/pages/news_detail_page.dart';
 import '../../features/splash/onboard_page.dart';
 import '../../features/splash/splash_page.dart';
+import '../models/match.dart';
 import '../models/news.dart';
 
 final routerConfig = GoRouter(
@@ -25,6 +28,16 @@ final routerConfig = GoRouter(
       path: '/news-detail',
       builder: (context, state) => NewsDetailPage(
         news: state.extra as News,
+      ),
+    ),
+    GoRoute(
+      path: '/add-match',
+      builder: (context, state) => const AddMatchPage(),
+    ),
+    GoRoute(
+      path: '/edit-match',
+      builder: (context, state) => EditMatchPage(
+        match: state.extra as MatchModel,
       ),
     ),
   ],
