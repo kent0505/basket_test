@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'models/my_model.dart';
+import 'models/match.dart';
 
 bool onboard = true;
 
@@ -20,21 +20,21 @@ Future<void> saveData() async {
 }
 
 // HIVE
-List<MyModel> mymodels = [];
+List<MatchModel> matchesList = [];
 
-Future<List<MyModel>> getModels() async {
-  final box = await Hive.openBox('mymodelbox');
-  List data = box.get('mymodels') ?? [];
-  mymodels = data.cast<MyModel>();
-  log(mymodels.length.toString());
-  return mymodels;
+Future<List<MatchModel>> getModels() async {
+  final box = await Hive.openBox('matchesbox');
+  List data = box.get('matchesList') ?? [];
+  matchesList = data.cast<MatchModel>();
+  log(matchesList.length.toString());
+  return matchesList;
 }
 
-Future<List<MyModel>> updateModels() async {
-  final box = await Hive.openBox('mymodelbox');
-  box.put('mymodels', mymodels);
-  mymodels = await box.get('mymodels');
-  return mymodels;
+Future<List<MatchModel>> updateModels() async {
+  final box = await Hive.openBox('matchesbox');
+  box.put('matchesList', matchesList);
+  matchesList = await box.get('matchesList');
+  return matchesList;
 }
 
 int getCurrentTimestamp() {

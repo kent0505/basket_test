@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../core/models/match.dart';
+import '../../../core/utils.dart';
 import '../../../core/widgets/buttons/primary_button.dart';
 import '../../../core/widgets/custom_appbar.dart';
 import '../../../core/widgets/custom_scaffold.dart';
@@ -41,6 +44,33 @@ class _AddMatchPageState extends State<AddMatchPage> {
         active = true;
       }
     });
+  }
+
+  void onNext() {
+    context.push(
+      '/add-score',
+      extra: MatchModel(
+        id: getCurrentTimestamp(),
+        name1: controller1.text,
+        name2: controller2.text,
+        score1: controller3.text,
+        score2: controller4.text,
+        eventTime: controller5.text,
+        eventName: controller6.text,
+        violations1: '',
+        violations2: '',
+        freeThrows1: '',
+        freeThrows2: '',
+        fromCenter1: '',
+        fromCenter2: '',
+        underBasket1: '',
+        underBasket2: '',
+        substitutions1: '',
+        substitutions2: '',
+        injuries1: '',
+        injuries2: '',
+      ),
+    );
   }
 
   @override
@@ -111,8 +141,8 @@ class _AddMatchPageState extends State<AddMatchPage> {
                 const SizedBox(height: 40),
                 PrimaryButton(
                   title: 'Next',
-                  active: active,
-                  onPressed: () {},
+                  // active: active,
+                  onPressed: onNext,
                 ),
                 const SizedBox(height: 40),
               ],

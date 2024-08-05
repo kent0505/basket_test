@@ -4,13 +4,14 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/config/router.dart';
 import 'core/config/themes.dart';
-import 'core/models/my_model.dart';
+import 'core/models/match.dart';
 import 'features/home/bloc/home_bloc.dart';
+import 'features/match/bloc/match_bloc.dart';
 
 void main() async {
   await Hive.initFlutter();
-  // await Hive.deleteBoxFromDisk('mymodelbox');
-  Hive.registerAdapter(MyModelAdapter());
+  // await Hive.deleteBoxFromDisk('matchesbox');
+  Hive.registerAdapter(MatchModelAdapter());
   runApp(const MyApp());
 }
 
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => HomeBloc()),
+        BlocProvider(create: (context) => MatchBloc()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
