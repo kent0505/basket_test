@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../config/app_colors.dart';
+
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     super.key,
@@ -23,7 +25,7 @@ class PrimaryButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.25),
+            color: AppColors.black25,
             blurRadius: 4,
             spreadRadius: 0,
             offset: const Offset(0, 4),

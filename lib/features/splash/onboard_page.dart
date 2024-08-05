@@ -1,9 +1,9 @@
-import 'package:basket_test/core/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/config/app_colors.dart';
+import '../../core/utils.dart';
 import '../../core/widgets/buttons/primary_button.dart';
 
 class OnboardPage extends StatefulWidget {
@@ -20,6 +20,7 @@ class _OnboardPageState extends State<OnboardPage> {
   String asset = 'hand';
   String title = 'Hello, User!';
   String subtitle = 'Welcome to the basketball app.';
+  double height = 300;
 
   void onNext() async {
     if (pageIndex == 2) {
@@ -35,6 +36,7 @@ class _OnboardPageState extends State<OnboardPage> {
         asset = 'hand';
         title = 'Hello, User!';
         subtitle = 'Welcome to the basketball app.';
+        height = 300;
       }
       if (pageIndex == 1) {
         bg = 'o2';
@@ -42,6 +44,7 @@ class _OnboardPageState extends State<OnboardPage> {
         title = 'Analyze basketball,\nwatch the news ';
         subtitle =
             'Watch the basketball news, stay up\nto date on the latest developments.';
+        height = 265;
       }
       if (pageIndex == 2) {
         bg = 'o3';
@@ -49,6 +52,7 @@ class _OnboardPageState extends State<OnboardPage> {
         title = 'Watch the basketball\ngames';
         subtitle =
             'Study detailed information on the\nmatches, draw conclusions ';
+        height = 265;
       }
     });
   }
@@ -59,14 +63,25 @@ class _OnboardPageState extends State<OnboardPage> {
       if (pageIndex == 0) {
         bg = 'o1';
         asset = 'hand';
+        title = 'Hello, User!';
+        subtitle = 'Welcome to the basketball app.';
+        height = 300;
       }
       if (pageIndex == 1) {
         bg = 'o2';
         asset = 'ball';
+        title = 'Analyze basketball,\nwatch the news ';
+        subtitle =
+            'Watch the basketball news, stay up\nto date on the latest developments.';
+        height = 265;
       }
       if (pageIndex == 2) {
         bg = 'o3';
         asset = 'basket';
+        title = 'Watch the basketball\ngames';
+        subtitle =
+            'Study detailed information on the\nmatches, draw conclusions ';
+        height = 265;
       }
     });
   }
@@ -98,11 +113,18 @@ class _OnboardPageState extends State<OnboardPage> {
                         Text(
                           title,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 24,
                             fontWeight: FontWeight.w600,
                             fontFamily: 'SF',
+                            shadows: <Shadow>[
+                              Shadow(
+                                color: AppColors.black25,
+                                blurRadius: 4,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
                           ),
                         ),
                         const SizedBox(height: 5),
@@ -114,6 +136,13 @@ class _OnboardPageState extends State<OnboardPage> {
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
                             fontFamily: 'SF',
+                            shadows: <Shadow>[
+                              Shadow(
+                                color: AppColors.black25,
+                                blurRadius: 4,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -164,12 +193,29 @@ class _OnboardPageState extends State<OnboardPage> {
             ),
           ),
           Positioned(
-            top: 60 + MediaQuery.of(context).viewPadding.top,
+            top: pageIndex == 2
+                ? 40
+                : 60 + MediaQuery.of(context).viewPadding.top,
             left: 0,
             right: 0,
-            child: Image.asset(
-              'assets/$asset.png',
-              height: 300,
+            child: Column(
+              children: [
+                Image.asset(
+                  'assets/$asset.png',
+                  height: 300,
+                ),
+                if (pageIndex == 2) ...[
+                  const Text(
+                    '10:12',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 62,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'SF',
+                    ),
+                  ),
+                ],
+              ],
             ),
           ),
         ],
@@ -199,6 +245,13 @@ class _PageIndicator extends StatelessWidget {
         decoration: BoxDecoration(
           color: active ? Colors.black : Colors.black.withOpacity(0.5),
           borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.black25,
+              blurRadius: 4,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
       ),
     );
