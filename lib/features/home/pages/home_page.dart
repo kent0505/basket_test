@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/widgets/custom_scaffold.dart';
+import '../../match/pages/match_page.dart';
 import '../../news/pages/news_page.dart';
 import '../bloc/home_bloc.dart';
 import '../widgets/nav_bar.dart';
@@ -21,30 +22,12 @@ class HomePage extends StatelessWidget {
 
               if (state is HomeNews) return const NewsPage();
 
-              return const _Home();
+              return const MatchesPage();
             },
           ),
           const NavBar(),
         ],
       ),
-    );
-  }
-}
-
-class _Home extends StatefulWidget {
-  const _Home();
-
-  @override
-  State<_Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<_Home> {
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        Text('Home'),
-      ],
     );
   }
 }

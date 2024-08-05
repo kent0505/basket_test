@@ -81,10 +81,17 @@ class _NavBarButton extends StatelessWidget {
         child: Column(
           children: [
             const Spacer(),
-            SvgPicture.asset(
-              'assets/$asset.svg',
-              color: active ? Colors.white : AppColors.white50,
-            ),
+            if (asset == 'tab1')
+              Image.asset(
+                'assets/tab1.png',
+                height: 30,
+                color: active ? Colors.white : AppColors.white50,
+              )
+            else
+              SvgPicture.asset(
+                'assets/$asset.svg',
+                color: active ? Colors.white : AppColors.white50,
+              ),
             const SizedBox(height: 8),
             Text(
               title,

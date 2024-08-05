@@ -22,7 +22,6 @@ class NewsCard extends StatelessWidget {
         height: 220,
         margin: const EdgeInsets.only(bottom: 42),
         decoration: BoxDecoration(
-          color: AppColors.card,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
