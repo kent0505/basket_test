@@ -16,11 +16,19 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: 55,
       width: MediaQuery.of(context).size.width > 400 ? 400 : null,
       decoration: BoxDecoration(
         color: Colors.black,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.25),
+            blurRadius: 4,
+            spreadRadius: 0,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: CupertinoButton(
         onPressed: active ? onPressed : null,
@@ -30,7 +38,7 @@ class PrimaryButton extends StatelessWidget {
             title,
             style: TextStyle(
               color: active ? Colors.white : Colors.grey,
-              fontSize: 16,
+              fontSize: 24,
               fontWeight: FontWeight.w600,
               fontFamily: 'SF',
             ),

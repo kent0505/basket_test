@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/widgets/custom_scaffold.dart';
+import '../../news/pages/news_page.dart';
 import '../bloc/home_bloc.dart';
 import '../widgets/nav_bar.dart';
 import 'settings_page.dart';
@@ -18,7 +19,7 @@ class HomePage extends StatelessWidget {
             builder: (context, state) {
               if (state is HomeSettings) return const SettingsPage();
 
-              if (state is HomeNews) return const Text('News');
+              if (state is HomeNews) return const NewsPage();
 
               return const _Home();
             },
