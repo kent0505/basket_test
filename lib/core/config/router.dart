@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/home/pages/home_page.dart';
 import '../../features/match/pages/add_match_page.dart';
 import '../../features/match/pages/add_score_page.dart';
-import '../../features/match/pages/edit_match_page.dart';
+import '../../features/match/pages/match_detail_page.dart';
 import '../../features/news/pages/news_detail_page.dart';
 import '../../features/splash/onboard_page.dart';
 import '../../features/splash/splash_page.dart';
@@ -36,8 +36,8 @@ final routerConfig = GoRouter(
       builder: (context, state) => const AddMatchPage(),
     ),
     GoRoute(
-      path: '/edit-match',
-      builder: (context, state) => EditMatchPage(
+      path: '/match-detail',
+      builder: (context, state) => MatchDetailPage(
         match: state.extra as MatchModel,
       ),
     ),

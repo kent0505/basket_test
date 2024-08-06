@@ -102,7 +102,6 @@ class _NavBarButton extends StatelessWidget {
                 fontFamily: 'P',
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).viewPadding.bottom),
             const Spacer(),
             Container(
               height: 3,

@@ -28,7 +28,7 @@ class MatchCard extends StatelessWidget {
       ),
       child: CupertinoButton(
         onPressed: () {
-          context.push('/edit-match', extra: match);
+          context.push('/match-detail', extra: match);
         },
         padding: EdgeInsets.zero,
         child: Row(
