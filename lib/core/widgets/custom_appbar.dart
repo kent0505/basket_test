@@ -1,4 +1,3 @@
-import 'package:basket_test/core/widgets/buttons/delete_button.dart';
 import 'package:flutter/material.dart';
 
 import '../config/app_colors.dart';
@@ -10,13 +9,11 @@ class CustomAppbar extends StatelessWidget {
     super.key,
     this.back = true,
     this.shadow = false,
-    this.delete,
   });
 
   final String title;
   final bool back;
   final bool shadow;
-  final void Function()? delete;
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +44,7 @@ class CustomAppbar extends StatelessWidget {
               ),
             ),
           ),
-          if (back) ...[
-            if (delete != null) ...[
-              DeleteButton(onDelete: delete!),
-            ] else
-              const SizedBox(width: 100),
-          ]
+          if (back) const SizedBox(width: 100),
         ],
       ),
     );

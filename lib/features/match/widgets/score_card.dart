@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/config/app_colors.dart';
 import '../../../core/models/match.dart';
+import '../../../core/widgets/buttons/primary_button.dart';
+import '../../../core/widgets/dialogs/delete_dialog.dart';
+import '../bloc/match_bloc.dart';
 
 class ScoreCard extends StatelessWidget {
   const ScoreCard({super.key, required this.match});
@@ -57,6 +62,29 @@ class ScoreCard extends StatelessWidget {
             title: 'Injuries',
             data1: match.injuries1,
             data2: match.injuries2,
+          ),
+          const SizedBox(height: 40),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: PrimaryButton(
+              title: 'Delete',
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return DeleteDialog(
+                      title: 'Delete?',
+                      onYes: () {
+                        context
+                            .read<MatchBloc>()
+                            .add(DeleteMatchEvent(id: match.id));
+                        context.pop();
+                      },
+                    );
+                  },
+                );
+              },
+            ),
           ),
           const SizedBox(height: 40),
         ],

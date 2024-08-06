@@ -197,6 +197,7 @@ class _BodyCard extends StatelessWidget {
         style: TextStyle(
           color: Colors.black,
           fontSize: 14,
+          height: 2,
           fontWeight: FontWeight.w600,
           fontFamily: 'SF',
           shadows: <Shadow>[
