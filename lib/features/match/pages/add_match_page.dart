@@ -5,6 +5,7 @@ import '../../../core/models/match.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/buttons/primary_button.dart';
 import '../../../core/widgets/custom_appbar.dart';
+import '../../../core/widgets/custom_listview.dart';
 import '../../../core/widgets/custom_scaffold.dart';
 import '../widgets/number_field.dart';
 import '../widgets/txt_field.dart';
@@ -89,11 +90,11 @@ class _AddMatchPageState extends State<AddMatchPage> {
     return CustomScaffold(
       body: Column(
         children: [
-          const CustomAppbar('Create new Matches', back: false),
+          const CustomAppbar('Create new Matches', back: false, shadow: true),
           const CustomAppbar(''),
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: CustomListview(
+              padding: 30,
               children: [
                 const SizedBox(height: 14),
                 TxtField(

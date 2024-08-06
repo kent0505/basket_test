@@ -6,6 +6,7 @@ import '../../../core/config/app_colors.dart';
 import '../../../core/models/news.dart';
 import '../../../core/widgets/buttons/primary_button.dart';
 import '../../../core/widgets/custom_appbar.dart';
+import '../../../core/widgets/custom_listview.dart';
 import '../../../core/widgets/custom_scaffold.dart';
 
 class NewsDetailPage extends StatelessWidget {
@@ -20,8 +21,8 @@ class NewsDetailPage extends StatelessWidget {
         children: [
           const CustomAppbar(''),
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: CustomListview(
+              padding: 25,
               children: [
                 const SizedBox(height: 12),
                 _ImageCard(news: news),
@@ -73,6 +74,9 @@ class _ImageCard extends StatelessWidget {
           child: CachedNetworkImage(
             imageUrl: news.image,
             fit: BoxFit.cover,
+            errorWidget: (context, url, error) {
+              return Container();
+            },
           ),
         ),
       ),

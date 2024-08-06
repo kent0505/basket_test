@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/models/news.dart';
 import '../../../core/widgets/custom_appbar.dart';
+import '../../../core/widgets/custom_listview.dart';
 import '../widgets/news_card.dart';
 
 class NewsPage extends StatelessWidget {
@@ -13,8 +14,8 @@ class NewsPage extends StatelessWidget {
       children: [
         const CustomAppbar('News', back: false),
         Expanded(
-          child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
+          child: CustomListview(
+            padding: 25,
             children: [
               const SizedBox(height: 20),
               ...List.generate(newsList.length, (index) {

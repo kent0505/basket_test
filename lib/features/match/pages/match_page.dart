@@ -1,64 +1,64 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/config/app_colors.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/custom_appbar.dart';
+import '../../../core/widgets/custom_listview.dart';
 import '../bloc/match_bloc.dart';
 import '../widgets/add_match_button.dart';
+import '../widgets/empty_text.dart';
 import '../widgets/match_card.dart';
+import '../widgets/weekdays_widget.dart';
+import '../widgets/your_team_text.dart';
 
-class MatchesPage extends StatelessWidget {
+class MatchesPage extends StatefulWidget {
   const MatchesPage({super.key});
+
+  @override
+  State<MatchesPage> createState() => _MatchesPageState();
+}
+
+class _MatchesPageState extends State<MatchesPage> {
+  String tab = getCurrentWeekday();
+
+  void onTab(String value) {
+    setState(() {
+      tab = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const CustomAppbar('Matches', back: false),
+        const CustomAppbar('Matches', back: false, shadow: true),
         Expanded(
-          child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
+          child: CustomListview(
+            padding: 25,
             children: [
               const SizedBox(height: 20),
-              const Text(
-                'Your Team',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'P',
-                ),
-              ),
+              const YourTeamText(),
               const SizedBox(height: 16),
-              // weekday tabs
+              WeekdaysWidget(
+                tab: tab,
+                onPressed: onTab,
+              ),
               const SizedBox(height: 30),
               BlocBuilder<MatchBloc, MatchState>(
                 builder: (context, state) {
                   if (state is MatchesLoadedState) {
-                    if (state.matches.isEmpty) {
-                      return Column(
-                        children: [
-                          Text(
-                            '#Enemy',
-                            style: TextStyle(
-                              color: AppColors.black50,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'P',
-                            ),
-                          ),
-                          const SizedBox(height: 30),
-                        ],
-                      );
+                    if (sortedMatches(state.matches, tab).isEmpty) {
+                      return const EmptyText();
                     }
 
                     return Column(
                       children: [
                         ...List.generate(
-                          matchesList.length,
+                          sortedMatches(state.matches, tab).length,
                           (index) {
-                            return MatchCard(match: matchesList[index]);
+                            return MatchCard(
+                              match: sortedMatches(state.matches, tab)[index],
+                            );
                           },
                         ),
                       ],
@@ -72,6 +72,7 @@ class MatchesPage extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(height: 80),
       ],
     );
   }

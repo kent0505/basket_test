@@ -1,3 +1,4 @@
+import 'package:basket_test/core/config/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class DeleteDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: const Color(0xff6047a7),
+      backgroundColor: AppColors.matchCard,
       child: SizedBox(
         height: height,
         width: MediaQuery.of(context).size.width > 300 ? 300 : null,

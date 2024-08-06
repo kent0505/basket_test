@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/models/match.dart';
 import '../../../core/widgets/buttons/primary_button.dart';
 import '../../../core/widgets/custom_appbar.dart';
+import '../../../core/widgets/custom_listview.dart';
 import '../../../core/widgets/custom_scaffold.dart';
 import '../bloc/match_bloc.dart';
 import '../widgets/number_field.dart';
@@ -116,11 +117,11 @@ class _AddScorePageState extends State<AddScorePage> {
     return CustomScaffold(
       body: Column(
         children: [
-          const CustomAppbar('Create Statistics', back: false),
+          const CustomAppbar('Create Statistics', back: false, shadow: true),
           const CustomAppbar(''),
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: CustomListview(
+              padding: 30,
               children: [
                 const SizedBox(height: 14),
                 NumberField(

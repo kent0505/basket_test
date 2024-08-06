@@ -72,28 +72,30 @@ List<News> newsList = [
         'https://cdn.basketballnews.com/fit-in/800x0/filters:strip_exif():filters:quality(95)/images/story/12082/reed-sheppard-rockets-sl.webp',
     date: '13.07.24',
   ),
-  // News(
-  //   title: '',
-  //   body: '',
-  //   image: '',
-  //   date: '',
-  // ),
-  // News(
-  //   title: '',
-  //   body: '',
-  //   image: '',
-  //   date: '',
-  // ),
-  // News(
-  //   title: '',
-  //   body: '',
-  //   image: '',
-  //   date: '',
-  // ),
-  // News(
-  //   title: '',
-  //   body: '',
-  //   image: '',
-  //   date: '',
-  // ),
+  News(
+    title:
+        'USA vs CAN preview: 3 things Team USA could do to win exhibition game against Canada',
+    body:
+        'The USA Men’s National Basketball will face arguably their biggest threat in the Olympics in Team Canada on July 10 in Las Vegas. This Canadian team features a multitude of NBA talents, just like Team USA. Led by 2024 NBA MVP finalist Shai Gilgeous-Alexander and 2023 NBA Champion Jamal Murray, Team Canada is poised to give Team USA all the headaches and possible roadblocks in its pursuit of gold.\n\nWith all things considered, here’s what Team USA could do to stamp their dominance against their neighboring rivals up North and send a message to the rest of the world eager to challenge their throne.\n\nDump the ball to Joel Embiid and let him go to work\n\nPerhaps the most dominant basketball player in the world right now, there’s probably nobody who could guard Joel Embiid one-on-one today on God’s green earth. A 7-foot-2 big man blessed with skill, size, finesse, and power, Embiid’s complete game will be a main problem for Team Canada. Among the frontliners they could throw at Embiid are Dwight Powell, Kelly Olynyk, and Trey Lyles but none of them - on paper and quick eye test - are quick or strong enough to deter Embiid and his dominance. Embiid dominated some of the league’s best defensive players, putting up 50 points on 4-time DPOY Rudy Gobert and scoring 70 points in phenom Victor Wembanyama’s head last season.\n\nTeam USA should quickly take advantage of this opportunity and run the offense through Embiid and make Team Canada send double teams at him. That’s when advantages and opportunities will open up to the rest of the guys like LeBron cutting to the rim or Durant and Curry spotting up for wide-open threes. It could be a pick-your-poison type of game where Team Canada could let Embiid play one-on-one and destroy them inside the paint or double him and risk putting two on the ball creating opportunities for the rest of Team USA.\n\nGet into lots of screening actions to create advantages and confuse the defense\n\nTeam Canada’s biggest strength will be their on-ball perimeter defense. Among Dillon Brooks, Gilgeous-Alexander, Lu Dort, and Nickeil Alexander-Walker, they will have long wings that could disrupt passing lanes and wreak havoc on the perimeter, creating easy baskets in transition. Canada’s a relatively young team with most players in their athletic prime so they would definitely take advantage of their biggest strength and make it their main style of play.\n\nTo counter this, Team USA could involve their players in more screening actions to create advantages on offense and confuse Canada’s defense. They should also incorporate slips and slides in those screens and in the pick and rolls for cutters and shooters to get open shots. By doing this, Team USA will negate Canada’s biggest strength and create easy and quality looks against their vaunted perimeter defense.\n\nPlay defense\n\nIt’s no secret that Team USA’s core players are aging and nearing the end of their athletic peaks. Although being the superstar basketball players that they are and still being at the top of their offensive games, Team USA’s defense will be suspect here and would probably be the main attacking point of their opponents. Jrue Holiday, Anthony Edwards, and Derrick White will have their work cut out for them in the perimeter right from the get-go as Team USA could be punished by a guard-heavy offensive team like Team Canada.\n\nTeam USA might outscore everyone, but you can make them work on the other side of the floor, and this could be Canada’s main mindset coming into the game. Despite the top-end talent and superstar-level shot-making on offense, Team USA should put more effort on the defensive end of the floor if they want to win this game.',
+    image:
+        'https://cdn.basketballnews.com/fit-in/800x0/filters:strip_exif():filters:quality(95)/images/story/12080/team-usa-basketball-paris-2024_690w.jpeg',
+    date: '10.07.24',
+  ),
+  News(
+    title: 'Team USA captures FIBA U17 World Cup title',
+    body:
+        'USA defeated Italy 129-88 to win the FIBA U17 Basketball World Cup 2024 championship and complete their mission for a seventh consecutive title.\n\nThe USA did not waste any time taking over the game at the Sinan Erdem Dome with a 21-2 first-quarter run to go ahead by 18 points and it was clear sailing the rest of the way.\n\nKoa Peat scored 26 points with 8 rebounds and 4 assists and Cameron Boozer collected 24 points and 13 rebounds. The USA spent the entire tournament breaking records and they snapped their mark for most points scored in a Final, besting their 111-80 win over Poland in 2010.\n\nUSA has won all seven editions of the biennial championship, adding the trophy to the ones in 2010, 2012, 2014, 2016, 2018, and 2022. The 2024 team shattered several records throughout the tournament, including the most points in a single game, most assists, and most steals, and finished the tournament with an average winning margin of 64.3 points - another U17 World Cup record.\n\nCameron Boozer will take home another piece of hardware as he was named TISSOT Most Valuable Player of the FIBA U17 Basketball World Cup 2024 after guiding the United States to the championship.\n\nBoozer collected 24 points and 13 rebounds in USA\'s 129-88 victory over Italy in the Final. For the tournament, Boozer averaged 20.1 points, 9.9 rebounds 2.0 assists, and 2.7 steals.\n\nJoining Boozer on the All-Star 5 were his USA teammate AJ Dybantsa, Maikcol Perez of Italy, Kaan Onat from Türkiye, and New Zealand\'s Oscar Goodman.\n\nDybantsa tallied 14 points, 4 rebounds, and 3 assists against Italy and averaged 14.1 points, 3.9 rebounds, 4.1 assists, and 1.6 steals in the title run. Perez had 18 points, 8 rebounds, and 8 assists in the Final and picked up 14.6 points, 8.6 rebounds, 4.3 assists, and 1.1 steals per game.',
+    image:
+        'https://cdn.basketballnews.com/fit-in/800x0/filters:strip_exif():filters:quality(95)/images/story/12077/team-usa-fiba-u17-champs_690w.jpeg',
+    date: '08.07.24',
+  ),
+  News(
+    title:
+        '2024 FIBA OQT: Brazil, Greece, Puerto Rico, Spain book a ticket to Paris',
+    body:
+        'After five grueling days of intense, do-or-die games, four teams have emerged as winners of the FIBA Olympic Qualifying Tournament and booked a trip to the Olympics.\n\nAmong the teams making their way to Paris for the 2024 Olympic Games are Brazil, Greece, Puerto Rico, and Spain after winning their respective tournaments in 4 various locations around the world. Brazil won in Riga, Latvia while Greece, Puerto Rico, and Spain each defended their home courts in Piraeus, San Juan, and Valencia respectively.\n\nBrazil is celebrating being crowned winners of the FIBA Olympic Qualifying Tournament 2024 in Latvia and securing a coveted place in Paris 2024. They will line up at the Men\'s Olympic Basketball Tournament for the 16th time after they spoiled the party in Riga for the home fans. A stunning opening quarter, which included 8 of 8 from downtown and a half-court buzzer beater, gave Brazil a commanding 34-11 advantage over Latvia, and they never looked back.\n\nSailing to a memorable 94-69 success, they were powered by forward Leo Meindl with a near double-double of 21 points and 9 rebounds. His teammate Bruno Caboclo also impressed with 21 points, which sealed the deal for him to be deservedly crowned the TISSOT MVP of the competition. When Brazil line up at Paris 2024, they will do so in Group B, where they will face host nation France, reigning FIBA Basketball World Cup champions Germany, and Japan.\n\nGreece will compete in the Men\'s Olympic Basketball Tournament for the first time since 2008, after their victory at the FIBA Olympic Qualifying Tournament 2024 Greece. They clinched their fourth win, 80-69 over Croatia, on Sunday in front of 11,810 fans at home in the final of the event.\n\nGreece jumped into the lead soon after the start and led for most of the encounter, although they were only able to truly shake off the resilient Croatia late in the final frame, led by Giannis Antetokounmpo, Nick Calathes, and Giorgos Papagiannis.\n\nAntetokounmpo, the Greek superstar of the Milwaukee Bucks, was named TISSOT MVP of the FIBA Olympic Qualifying Tournament 2024 in Greece. He led the way for his team in the final with 23 points and 8 rebounds, while averaging 22.5 points, 3 rebounds, and 2 assists in the tournament. Greece will be placed in Group A and will face Australia, Canada, and Spain.\n\nPuerto Rico triumphed at the FIBA Olympic Qualifying Tournament 2024 at home in San Juan to clinch a spot in the Men\'s Olympic Basketball Tournament for the first time since 2004.\n\nNelson Colon\'s men were helped by 13,504 passionate supporters who showed up in numbers to will the home side to a 79-68 victory against Lithuania in Sunday\'s Final. The one-two punch of Jose Alvarado and Tremont Waters proved unstoppable for the Europeans, as Alvarado led the way with a game-high 23 points and Waters chipped in with 18.',
+    image:
+        'https://cdn.basketballnews.com/fit-in/800x0/filters:strip_exif():filters:quality(95)/images/story/12074/greece-fiba-oqt.webp',
+    date: '08.07.24',
+  ),
 ];
