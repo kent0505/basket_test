@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/config/app_colors.dart';
+import '../../../core/models/basket_model.dart';
 import '../../../core/models/match.dart';
 import '../../../core/widgets/buttons/primary_button.dart';
 import '../../../core/widgets/dialogs/delete_dialog.dart';
@@ -12,10 +13,12 @@ class ScoreCard extends StatelessWidget {
   const ScoreCard({
     super.key,
     required this.match,
+    this.model,
     this.delete = true,
   });
 
   final MatchModel match;
+  final BasketModel? model;
   final bool delete;
 
   @override
@@ -32,26 +35,30 @@ class ScoreCard extends StatelessWidget {
         children: [
           const SizedBox(height: 15),
           const _StatisticsText(),
-          if (!delete) ...[
+          if (!delete && model != null) ...[
             const SizedBox(height: 30),
-            const _PercentStatistics(
+            _PercentStatistics(
               title: 'Win',
-              percent: 30,
+              percent1: int.parse(model!.p1),
+              percent2: int.parse(model!.p2),
             ),
             const SizedBox(height: 30),
-            const _PercentStatistics(
+            _PercentStatistics(
               title: 'Attacks',
-              percent: 30,
+              percent1: int.parse(model!.p3),
+              percent2: int.parse(model!.p4),
             ),
             const SizedBox(height: 30),
-            const _PercentStatistics(
+            _PercentStatistics(
               title: 'Shooting',
-              percent: 30,
+              percent1: int.parse(model!.p5),
+              percent2: int.parse(model!.p6),
             ),
             const SizedBox(height: 30),
-            const _PercentStatistics(
+            _PercentStatistics(
               title: 'Passing',
-              percent: 30,
+              percent1: int.parse(model!.p7),
+              percent2: int.parse(model!.p8),
             ),
           ],
           const SizedBox(height: 40),
@@ -122,30 +129,73 @@ class ScoreCard extends StatelessWidget {
 }
 
 class _PercentStatistics extends StatelessWidget {
-  const _PercentStatistics({required this.title, required this.percent});
+  const _PercentStatistics({
+    required this.title,
+    required this.percent1,
+    required this.percent2,
+  });
 
   final String title;
-  final int percent;
+  final int percent1;
+  final int percent2;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          height: 11,
-          width: 127,
-          decoration: BoxDecoration(
-            color: const Color(0xffd2a276),
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.black25,
-                blurRadius: 4,
-                offset: const Offset(0, 4),
+        Stack(
+          children: [
+            Container(
+              height: 12,
+              width: 127,
+              decoration: BoxDecoration(
+                color: const Color(0xffd2a276),
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.black25,
+                    blurRadius: 4,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            Container(
+              height: 12,
+              width: (127 * percent1) / 100,
+              decoration: BoxDecoration(
+                color: AppColors.main,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.black25,
+                    blurRadius: 4,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 12,
+              width: percent1 > 30 ? (127 * percent1) / 100 : 30,
+              child: Row(
+                children: [
+                  const Spacer(),
+                  Text(
+                    '$percent1%',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'P',
+                    ),
+                  ),
+                  const SizedBox(width: 7),
+                ],
+              ),
+            ),
+          ],
         ),
         SizedBox(
           width: 70,
@@ -168,20 +218,58 @@ class _PercentStatistics extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          height: 11,
-          width: 127,
-          decoration: BoxDecoration(
-            color: const Color(0xffd2a276),
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.black25,
-                blurRadius: 4,
-                offset: const Offset(0, 4),
+        Stack(
+          children: [
+            Container(
+              height: 12,
+              width: 127,
+              decoration: BoxDecoration(
+                color: const Color(0xffd2a276),
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.black25,
+                    blurRadius: 4,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            Container(
+              height: 12,
+              width: (127 * percent2) / 100,
+              decoration: BoxDecoration(
+                color: AppColors.main,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.black25,
+                    blurRadius: 4,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 12,
+              width: percent2 > 30 ? (127 * percent2) / 100 : 30,
+              child: Row(
+                children: [
+                  const Spacer(),
+                  Text(
+                    '$percent2%',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'P',
+                    ),
+                  ),
+                  const SizedBox(width: 7),
+                ],
+              ),
+            ),
+          ],
         ),
       ],
     );

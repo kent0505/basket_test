@@ -26,27 +26,44 @@ class BasketDetailPage extends StatelessWidget {
               padding: 0,
               children: [
                 const SizedBox(height: 40),
-                SizedBox(
-                  width: 300,
-                  child: Center(
-                    child: Text(
-                      model.league,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 32,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'P',
-                        shadows: <Shadow>[
-                          Shadow(
-                            color: AppColors.black25,
-                            blurRadius: 4,
-                            offset: const Offset(0, 4),
-                          ),
-                        ],
-                      ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Text(
+                    model.league,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'P',
+                      shadows: <Shadow>[
+                        Shadow(
+                          color: AppColors.black25,
+                          blurRadius: 4,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
                     ),
                   ),
                 ),
+                if (model.week.isNotEmpty) ...[
+                  const SizedBox(height: 30),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Center(
+                      child: Text(
+                        model.week,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: AppColors.main,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'P',
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 40),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -160,6 +177,7 @@ class BasketDetailPage extends StatelessWidget {
                 const SizedBox(height: 17),
                 ScoreCard(
                   delete: false,
+                  model: model,
                   match: MatchModel(
                     id: 0,
                     name1: '',

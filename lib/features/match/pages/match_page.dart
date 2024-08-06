@@ -100,6 +100,7 @@ class _MatchesPageState extends State<MatchesPage> {
                 },
               ),
               const AddMatchButton(),
+              const SizedBox(height: 30),
             ],
           ),
         ),

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:hive_flutter/hive_flutter.dart';
@@ -6,12 +7,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'models/match.dart';
 
 bool onboard = true;
+int fetchedDay = 1;
+String jsonString = '';
+Map<String, dynamic> matchesJson = {};
 
 // SHARED PREFS
 Future<void> getData() async {
   final prefs = await SharedPreferences.getInstance();
-  // await prefs.remove('footballCachedData');
+  // await prefs.remove('json_key');
   onboard = prefs.getBool('onboard') ?? true;
+  jsonString = prefs.getString('json_key') ?? '';
+  fetchedDay = prefs.getInt('fetchedDay') ?? 1;
+  if (jsonString.isNotEmpty) matchesJson = jsonDecode(jsonString);
 }
 
 Future<void> saveData() async {

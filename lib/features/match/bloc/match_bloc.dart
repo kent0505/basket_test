@@ -18,7 +18,7 @@ class MatchBloc extends Bloc<MatchEvent, MatchState> {
     on<GetMatchesEvent>((event, emit) async {
       if (matchesList.isEmpty) {
         _matches = await getModels();
-        _games = await api.fetchMatches(DateTime.now());
+        _games = await api.fetchMatches();
         emit(MatchesLoadedState(
           matches: _matches,
           games: _games,
