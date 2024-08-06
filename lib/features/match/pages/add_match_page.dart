@@ -142,7 +142,7 @@ class _AddMatchPageState extends State<AddMatchPage> {
                 const SizedBox(height: 40),
                 PrimaryButton(
                   title: 'Next',
-                  // active: active,
+                  active: active,
                   onPressed: onNext,
                 ),
                 const SizedBox(height: 40),
