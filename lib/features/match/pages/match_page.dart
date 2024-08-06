@@ -6,6 +6,7 @@ import '../../../core/widgets/custom_appbar.dart';
 import '../../../core/widgets/custom_listview.dart';
 import '../bloc/match_bloc.dart';
 import '../widgets/add_match_button.dart';
+import '../widgets/basket_card.dart';
 import '../widgets/empty_text.dart';
 import '../widgets/match_card.dart';
 import '../widgets/weekdays_widget.dart';
@@ -36,6 +37,36 @@ class _MatchesPageState extends State<MatchesPage> {
           child: CustomListview(
             padding: 25,
             children: [
+              const SizedBox(height: 10),
+              WeekdaysWidget(
+                tab: tab,
+                onPressed: onTab,
+              ),
+              const SizedBox(height: 30),
+              BlocBuilder<MatchBloc, MatchState>(
+                builder: (context, state) {
+                  if (state is MatchesLoadedState) {
+                    if (state.games.isEmpty) {
+                      return const EmptyText();
+                    }
+
+                    return Column(
+                      children: [
+                        ...List.generate(
+                          state.games.length,
+                          (index) {
+                            return BasketCard(
+                              model: state.games[index],
+                            );
+                          },
+                        ),
+                      ],
+                    );
+                  }
+
+                  return Container();
+                },
+              ),
               const SizedBox(height: 20),
               const YourTeamText(),
               const SizedBox(height: 16),

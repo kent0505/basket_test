@@ -1,63 +1,45 @@
-import 'dart:convert';
 import 'dart:developer';
 
-import 'package:http/http.dart' as https;
-import 'package:intl/intl.dart';
-
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:dio/dio.dart';
 
 import '../../../core/models/basket_model.dart';
 
 class MatchApi {
-  final String apiKey = 'e0fbe3beaaed6d5b1321d8a9cbeaf93a';
-  final String apiHost = 'v3.basketball.api-sports.io';
-  final String endpoint = 'fixtures';
+  final String apiKey = 'aad567230b15af533a80bf5aa13a14cb';
+  final String apiHost = 'v1.basketball.api-sports.io';
+  final String endpoint = 'games';
+
+  final dio = Dio();
 
   Future<List<BasketModel>> fetchMatches(DateTime dateTime) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    final String cachedData = prefs.getString('footballCachedData') ?? '';
-    if (cachedData.isNotEmpty) {
-      final data = json.decode(cachedData);
-      await Future.delayed(const Duration(seconds: 1));
-      return (data['response'] as List<dynamic>)
-          .map((e) => BasketModel.fromJson(e as Map<String, dynamic>))
-          .toList();
-    }
-
-    final date = DateFormat('yyyy-MM-dd').format(dateTime);
-    final String lastUpdateDate =
-        prefs.getString('footballLastUpdateDate') ?? '';
-    if (lastUpdateDate != date) {
-      final response = await https.get(
-        Uri.https(apiHost, endpoint, {'date': date}),
-        headers: {
-          'x-rapidapi-host': apiHost,
-          'x-rapidapi-key': apiKey,
-        },
+    try {
+      final response = await dio.get(
+        'https://v1.basketball.api-sports.io/games?date=2024-08-01',
+        options: Options(
+          headers: {
+            'x-rapidapi-host': apiHost,
+            'x-rapidapi-key': apiKey,
+          },
+        ),
       );
+
+      log(response.data['response'].toString());
       log(response.statusCode.toString());
       if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        await prefs.setString('footballLastUpdateDate', date);
-        await prefs.setString('footballCachedData', json.encode(data));
-        final matches = (data['response'] as List<dynamic>)
-            .map((e) => BasketModel.fromJson(e as Map<String, dynamic>))
-            .toList();
-        return matches;
+        final List result = response.data['response'];
+        log(result.length.toString());
+        final data = result.map((item) {
+          return BasketModel.fromJson(item);
+        }).toList();
+
+        return data;
       } else {
-        throw Exception('Failed to load data');
+        log('ELSE');
+        return [];
       }
-    } else {
-      final String cachedData = prefs.getString('footballCachedData') ?? '';
-      if (cachedData.isNotEmpty) {
-        final data = json.decode(cachedData);
-        return (data['response'] as List<dynamic>)
-            .map((e) => BasketModel.fromJson(e as Map<String, dynamic>))
-            .toList();
-      } else {
-        throw Exception('Cached data is empty');
-      }
+    } catch (e) {
+      log(e.toString());
+      return [];
     }
   }
 }

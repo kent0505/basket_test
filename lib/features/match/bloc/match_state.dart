@@ -6,5 +6,9 @@ final class MatchInitial extends MatchState {}
 
 class MatchesLoadedState extends MatchState {
   final List<MatchModel> matches;
-  MatchesLoadedState({required this.matches});
+  final List<BasketModel> games;
+  MatchesLoadedState({
+    required this.matches,
+    required this.games,
+  });
 }

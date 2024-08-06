@@ -1,4 +1,4 @@
-import 'dart:developer';
+import 'dart:math';
 
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,7 +10,7 @@ bool onboard = true;
 // SHARED PREFS
 Future<void> getData() async {
   final prefs = await SharedPreferences.getInstance();
-  // await prefs.remove('onboard');
+  // await prefs.remove('footballCachedData');
   onboard = prefs.getBool('onboard') ?? true;
 }
 
@@ -26,7 +26,6 @@ Future<List<MatchModel>> getModels() async {
   final box = await Hive.openBox('matchesbox');
   List data = box.get('matchesList') ?? [];
   matchesList = data.cast<MatchModel>();
-  log(matchesList.length.toString());
   return matchesList;
 }
 
@@ -66,4 +65,9 @@ String getCurrentWeekday() {
   if (date.weekday == 6) return 'Sat';
   if (date.weekday == 7) return 'Sun';
   return 'Mon';
+}
+
+String getRandomInt(int max) {
+  final random = Random();
+  return random.nextInt(max).toString();
 }

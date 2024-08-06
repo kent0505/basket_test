@@ -9,9 +9,14 @@ import '../../../core/widgets/dialogs/delete_dialog.dart';
 import '../bloc/match_bloc.dart';
 
 class ScoreCard extends StatelessWidget {
-  const ScoreCard({super.key, required this.match});
+  const ScoreCard({
+    super.key,
+    required this.match,
+    this.delete = true,
+  });
 
   final MatchModel match;
+  final bool delete;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +32,28 @@ class ScoreCard extends StatelessWidget {
         children: [
           const SizedBox(height: 15),
           const _StatisticsText(),
+          if (!delete) ...[
+            const SizedBox(height: 30),
+            const _PercentStatistics(
+              title: 'Win',
+              percent: 30,
+            ),
+            const SizedBox(height: 30),
+            const _PercentStatistics(
+              title: 'Attacks',
+              percent: 30,
+            ),
+            const SizedBox(height: 30),
+            const _PercentStatistics(
+              title: 'Shooting',
+              percent: 30,
+            ),
+            const SizedBox(height: 30),
+            const _PercentStatistics(
+              title: 'Passing',
+              percent: 30,
+            ),
+          ],
           const SizedBox(height: 40),
           _StatisticsData(
             title: 'Violations',
@@ -64,31 +91,99 @@ class ScoreCard extends StatelessWidget {
             data2: match.injuries2,
           ),
           const SizedBox(height: 40),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: PrimaryButton(
-              title: 'Delete',
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return DeleteDialog(
-                      title: 'Delete?',
-                      onYes: () {
-                        context
-                            .read<MatchBloc>()
-                            .add(DeleteMatchEvent(id: match.id));
-                        context.pop();
-                      },
-                    );
-                  },
-                );
-              },
+          if (delete)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: PrimaryButton(
+                title: 'Delete',
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return DeleteDialog(
+                        title: 'Delete?',
+                        onYes: () {
+                          context
+                              .read<MatchBloc>()
+                              .add(DeleteMatchEvent(id: match.id));
+                          context.pop();
+                        },
+                      );
+                    },
+                  );
+                },
+              ),
             ),
-          ),
           const SizedBox(height: 40),
         ],
       ),
+    );
+  }
+}
+
+class _PercentStatistics extends StatelessWidget {
+  const _PercentStatistics({required this.title, required this.percent});
+
+  final String title;
+  final int percent;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          height: 11,
+          width: 127,
+          decoration: BoxDecoration(
+            color: const Color(0xffd2a276),
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.black25,
+                blurRadius: 4,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          width: 70,
+          child: Center(
+            child: Text(
+              title,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 10,
+                fontWeight: FontWeight.w500,
+                fontFamily: 'P',
+                shadows: <Shadow>[
+                  Shadow(
+                    color: AppColors.black25,
+                    blurRadius: 4,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Container(
+          height: 11,
+          width: 127,
+          decoration: BoxDecoration(
+            color: const Color(0xffd2a276),
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.black25,
+                blurRadius: 4,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

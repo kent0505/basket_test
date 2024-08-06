@@ -1,3 +1,5 @@
+import 'package:basket_test/core/models/basket_model.dart';
+import 'package:basket_test/features/match/pages/basket_detail_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/home/pages/home_page.dart';
@@ -45,6 +47,12 @@ final routerConfig = GoRouter(
       path: '/add-score',
       builder: (context, state) => AddScorePage(
         match: state.extra as MatchModel,
+      ),
+    ),
+    GoRoute(
+      path: '/basket-detail',
+      builder: (context, state) => BasketDetailPage(
+        model: state.extra as BasketModel,
       ),
     ),
   ],
